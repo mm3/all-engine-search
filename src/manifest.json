@@ -1,0 +1,39 @@
+{
+
+  "manifest_version": 2,
+  "name": "All engine search",
+  "version": "0.1",
+
+  "description": "Send search request to all search engines.",
+  "homepage_url": "https://github.com/mm3/all-engine-search",
+
+  "icons": {
+    "512": "icon.png"
+  },
+
+  "permissions": [
+    "search",
+    "webRequest",
+    "https://www.google.com/search*"
+  ],
+
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true,
+    "chrome_style": true
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "All engine search",
+      "search_url": "https://www.google.com/search?q={searchTerms}",
+      "suggest_url": "https://www.google.com/complete/search?client=firefox&q={searchTerms}",
+      "encoding": "UTF-8",
+      "is_default": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "all-engine-search",
+  "version": "0.0.1",
+  "description": "All engine search",
+  "author": "mm3",
+  "license": "MIT",
+  "keywords": [
+    "firefox",
+    "search",
+    "engine"
+  ],
+  "scripts": {
+    "build": "web-ext build -s ./src -a dist -o",
+    "watch": "web-ext run -s src/",
+    "test": "web-ext lint -s src"
+  },
+  "devDependencies": {
+    "web-ext": "^3.1.1"
+  }
+}
