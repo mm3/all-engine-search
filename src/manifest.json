@@ -9,7 +9,7 @@
 
   "applications": {
     "gecko": {
-      "strict_min_version": "55"
+      "strict_min_version": "64.0"
     }
   },
 
@@ -44,7 +44,6 @@
       "keyword": ".",
       "search_url": "https://www.google.com/search?q={searchTerms}",
       "suggest_url": "https://www.google.com/complete/search?client=firefox&q={searchTerms}",
-      "encoding": "UTF-8",
       "is_default": true
     }
   }
