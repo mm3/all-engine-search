@@ -1,6 +1,6 @@
 {
   "name": "all-engine-search",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "All engine search",
   "author": "mm3",
   "license": "MIT",
@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "web-ext build -s ./src -a dist -o",
-    "watch": "web-ext run -s src/",
+    "watch": "web-ext run -s src/ --verbose",
     "test": "web-ext lint -s src"
   },
   "devDependencies": {
