@@ -3,7 +3,7 @@ const LINK_PREFIX = 'https://www.google.com/search?q=';
 const STORAGE_ITEM = 'allsearchengines';
 const ENGINE_NAME = 'All engine search';
 
-const trimPrefix = (str, prefix) => str.startsWith(prefix) ? str.slice(prefix.length) : str;
+const trimPrefix = (str, prefix) => str.startsWith(prefix) ? decodeURIComponent(str.slice(prefix.length).replace(/\+/g, '%20')) : str;
 
 const searchRequest = (engine, request) => browser.search.search({ query: request, engine: engine.name });
 
