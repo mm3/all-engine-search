@@ -1,9 +1,11 @@
 
-const LINK_PREFIX = 'https://www.google.com/search?q=';
+const LINK_PREFIX = 'https://www.google.com/search?client=firefox-all&q=';
 const STORAGE_ITEM = 'allsearchengines';
 const ENGINE_NAME = 'All engine search';
 
-const trimPrefix = (str, prefix) => str.startsWith(prefix) ? decodeURIComponent(str.slice(prefix.length).replace(/\+/g, '%20')) : str;
+const checkPrefix = (str, prefix) => str.startsWith(prefix);
+
+const trimPrefix = (str, prefix) => decodeURIComponent(str.slice(prefix.length).replace(/\+/g, '%20'));
 
 const searchRequest = (engine, request) => browser.search.search({ query: request, engine: engine.name });
 
@@ -16,8 +18,12 @@ const isSelectedEngine = (engine) => {
 };
 
 const processing = (requestDetails) => {
-    processingRequest(trimPrefix(requestDetails.url, LINK_PREFIX));
-    return {cancel: true};
+    if(checkPrefix(requestDetails.url, LINK_PREFIX)) {
+        processingRequest(trimPrefix(requestDetails.url, LINK_PREFIX));
+        return {cancel: true};
+    } else {
+        return {cancel: false};
+    }
 };
 
 function processingRequest(request) {

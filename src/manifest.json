@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "All engine search",
-  "version": "0.3",
+  "version": "0.4",
 
   "description": "Send search request to all search engines.",
   "homepage_url": "https://github.com/mm3/all-engine-search",
@@ -42,7 +42,7 @@
     "search_provider": {
       "name": "All engine search",
       "keyword": ".",
-      "search_url": "https://www.google.com/search?q={searchTerms}",
+      "search_url": "https://www.google.com/search?client=firefox-all&q={searchTerms}",
       "suggest_url": "https://www.google.com/complete/search?client=firefox&q={searchTerms}",
       "encoding": "UTF-8",
       "is_default": true
