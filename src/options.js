@@ -1,5 +1,6 @@
 
 const STORAGE_ITEM = 'allsearchengines';
+const ENGINE_NAME = 'All engine search';
 
 const processSearchEngine = (engine) => {
     let checkbox = document.createElement("input");
@@ -39,13 +40,9 @@ const saveEngines = () => {
 };
 
 
-document.getElementById("save").addEventListener("click", key => saveEngines());
+document.getElementById("save").addEventListener("click", saveEngines);
 
 
-browser.search.get().then(engines => {
-    for (engine of engines) {
-        if(engine.name !== 'All engine search') {
-            processSearchEngine(engine);
-        }
-    }
-});
+browser.search.get().then(engines => engines
+    .filter(engine => engine.name !== ENGINE_NAME)
+    .forEach(processSearchEngine));

@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "All engine search",
-  "version": "0.4",
+  "version": "0.5",
 
   "description": "Send search request to all search engines.",
   "homepage_url": "https://github.com/mm3/all-engine-search",
@@ -18,10 +18,9 @@
   },
 
   "permissions": [
+    "tabs",
     "search",
-    "webRequest",
-    "webRequestBlocking",
-    "https://www.google.com/search*"
+    "webNavigation"
   ],
 
   "options_ui": {
