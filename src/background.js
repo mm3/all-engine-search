@@ -31,15 +31,22 @@ const closeTab = (tabId) => browser.tabs.remove(tabId).then(onSuccess, onError);
 const processNavigateTab = (tab) => {
     if(tab.frameId === 0) {
         processingRequest(trimPrefix(tab.url, LINK_PREFIX));
-        closeTab(tab.tabId);
+        setTimeout(() => closeTab(tab.tabId), 100);
     }
 };
 
-if(!browser.webNavigation.onBeforeNavigate.hasListener(processNavigateTab)) {
-    browser.webNavigation.onBeforeNavigate.addListener(processNavigateTab,
-        {url: [{urlPrefix: LINK_PREFIX}]});
-}
+const initNavigateTab = () => {
+    if(!browser.webNavigation.onBeforeNavigate.hasListener(processNavigateTab)) {
+        browser.webNavigation.onBeforeNavigate.addListener(processNavigateTab,
+            {url: [{urlPrefix: LINK_PREFIX}]});
+    }
+};
 
-if(!browser.omnibox.onInputEntered.hasListener(processingRequest)) {
-    browser.omnibox.onInputEntered.addListener(processingRequest);
-}
+const initOmnibox = () => {
+    if(!browser.omnibox.onInputEntered.hasListener(processingRequest)) {
+        browser.omnibox.onInputEntered.addListener(processingRequest);
+    }
+};
+
+initNavigateTab();
+initOmnibox();

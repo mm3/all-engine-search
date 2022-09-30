@@ -1,6 +1,6 @@
 {
   "name": "all-engine-search",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "All engine search",
   "author": "mm3",
   "license": "MIT",
@@ -15,6 +15,6 @@
     "test": "web-ext lint -s src"
   },
   "devDependencies": {
-    "web-ext": "^3.1.1"
+    "web-ext": "^7.2.0"
   }
 }

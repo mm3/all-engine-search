@@ -9,9 +9,11 @@ const processSearchEngine = (engine) => {
     checkbox.checked = isSelectedEngine(engine);
     let label = document.createElement('label');
     label.appendChild(document.createTextNode(engine.name));
-    document.getElementById("engines").appendChild(checkbox);
-    document.getElementById("engines").appendChild(label);
-    document.getElementById("engines").appendChild(document.createElement("BR"))
+
+    let engines = document.getElementById("engines");
+    engines.appendChild(checkbox);
+    engines.appendChild(label);
+    engines.appendChild(document.createElement("BR"))
 };
 
 const isSelectedEngine = (engine) => {
@@ -39,10 +41,13 @@ const saveEngines = () => {
     localStorage.setItem(STORAGE_ITEM, getSelectedEngines());
 };
 
+const initOptions = () => {
+    document.getElementById("save").addEventListener("click", saveEngines);
 
-document.getElementById("save").addEventListener("click", saveEngines);
 
+    browser.search.get().then(engines => engines
+        .filter(engine => engine.name !== ENGINE_NAME)
+        .forEach(processSearchEngine));
+};
 
-browser.search.get().then(engines => engines
-    .filter(engine => engine.name !== ENGINE_NAME)
-    .forEach(processSearchEngine));
+initOptions();
